@@ -1,4 +1,4 @@
-# lecture2presentation
+# paper2lecture
 
 # What is this program
 
