@@ -1,5 +1,9 @@
 # paper2lecture
 
+# Tutorial Videos 
+
+Getting started and overview: https://www.youtube.com/watch?v=FLf29qkC_LA&feature=youtu.be
+
 # What is this program
 
 This takes a .tex file as input and uses text-to-speech software and keyword searches to turn it into a presentation.
