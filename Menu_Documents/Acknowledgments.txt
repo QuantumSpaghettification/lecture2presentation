@@ -1,0 +1,41 @@
+If you belive a source has being given due acknowledgment:
+- Firstly my appolgies.
+- Secondly send an email to "quantumspaghettification 'at' gmail 'dot' com"  to make this known
+
+*Python Modules used*
+-re
+-sys
+-os
+-time
+-regex
+-pygame
+-numpy
+-math
+
+*Command line programs used*
+-convert
+-pdflatex
+-rm
+-pdftk
+-spd-say
+
+*LaTeX packages used*
+-beamerposter
+-scrextend
+-emerald
+
+*Stackoverflow posts*
+In accordance with https://meta.stackexchange.com/questions/271080/the-mit-license-clarity-on-using-code-on-stack-overflow-and-stack-exchange code used is linked to in code of this program. For completness here is a list of links:
+-https://stackoverflow.com/questions/26385984/recursive-pattern-in-regex 
+-https://stackoverflow.com/questions/20842801/how-to-display-text-in-pygame
+-https://stackoverflow.com/questions/9475241/split-string-every-nth-character
+-https://stackoverflow.com/questions/16044229/how-to-get-keyboard-input-in-pygame
+-https://stackoverflow.com/questions/39482273/changing-image-on-button-click
+-https://tex.stackexchange.com/questions/304009/setting-a-custom-rgb-background-color-in-beamer/312150
+
+*Other Internet Sources*
+Here is a list of other places looked at to help build this program.
+-https://pythonprogramming.net/making-interactive-pygame-buttons/
+-https://www.pygame.org/wiki/WindowResizing
+-https://regex101.com/
+-https://pythonspot.com/tk-file-dialogs/
