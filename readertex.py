@@ -11,8 +11,21 @@ from functions import *
 from tkinter import filedialog
 from tkinter import *
  
+def Last_Start_Read():
+	f=open("Last_Start.txt")
+	cont=f.readlines()
+	f.close()
+	last_file=cont[0].rstrip()
+	last_start=cont[1].rstrip()
+	return (last_file,last_start)
 
-def start_up_screen():
+def Last_Start_Write(file,start):
+	f=open("Last_Start.txt","w")
+	for x in [file,"\n",start]:
+		f.write(x)
+	f.close()
+
+def start_up_screen(last_file,last_start):
 	class broken:
 		def __init__(self,name):
 			self.name=name
@@ -22,9 +35,9 @@ def start_up_screen():
 	class file_name: 
 		def __init__(self,name):
 			self.name=name
-			self.filename="Upload File Above"
+			self.filename=last_file
 		def update(self):
-			self.filename=filedialog.askopenfilename(initialdir = "~/Desktop/",title = "Select file",filetypes = (("tex files","*.tex"),("all files","*.*")))
+			self.filename=filedialog.askopenfilename(initialdir = "~/Desktop",title = "Select file",filetypes = (("tex files","*.tex"),("all files","*.*")))
 	filename=file_name("use_file")
 	broke=broken("use_broken")
 	root = Tk()
@@ -38,7 +51,7 @@ def start_up_screen():
 	T2.insert(END,"Please insert start point box below")
 	T3 = Text(root, height=2, width=40)#https://www.python-course.eu/tkinter_text_widget.php
 	T3.pack()
-	T3.insert(END,"")
+	T3.insert(END,last_start)
 	break_btn=Button(root, text="Submit", command=lambda: broke.break_now())
 	break_btn.pack()
 	while True:
@@ -53,7 +66,9 @@ def start_up_screen():
 		root.update()
 	root.destroy()
 	return start_point, filename.filename
-start_point,file_name=start_up_screen()
+last_file,last_start=Last_Start_Read()
+start_point,file_name=start_up_screen(last_file,last_start)
+Last_Start_Write(file_name,start_point)
 
 f=open(file_name,"r")
 content_temp=f.readlines()
@@ -120,7 +135,7 @@ pygame_screen=pygame.display.set_mode((1280,700),HWSURFACE|DOUBLEBUF|RESIZABLE)
 #...............................................
 #Start text			
 
-def main_loop(start_point):
+def main_loop(start_point,voice_type):
 	id_start_sec=0
 	broken=0
 	while id_start_sec<len(sentences):
@@ -191,18 +206,22 @@ def main_loop(start_point):
 
 			#else:
 			words=say.split(" ")
-			n=0
-			while n < len(words):
+			h=0
+			while h < len(words):
 				if voice_type==0:
 					os.system('spd-say -o pico-generic -w -m none "'+words[n]+'" ')#the -w here is vital
 					sleep(numpy.abs(numpy.random.normal(0.5,0.1)))
-					n=n+1
+					h=h+1
 				if voice_type==1:
 					say_here=" ".join(words[n:])
 					os.system('spd-say -y english -t male1 -r -60 -p 25 -w  -m none "'+say_here+'" ')#the -w here is vital
-					n=len(words)
-				event_output=pygame_events(img_display,pygame_screen)
+					h=len(words)
+				if voice_type==2:
+					say_here=" ".join(words[n:])
+					os.system('spd-say -y english -t male1 -r 100 -p 25 -w  -m none "'+say_here+'" ')#the -w here is vital
+					h=len(words)
+				voice_type=pygame_events(img_display,pygame_screen,voice_type)
 					
 						
 
-main_loop(start_point)
+main_loop(start_point,voice_type)
